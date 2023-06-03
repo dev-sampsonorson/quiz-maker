@@ -68,7 +68,8 @@
               "browserTarget": "level2Cert:build:production"
             },
             "development": {
-              "browserTarget": "level2Cert:build:development"
+              "browserTarget": "level2Cert:build:development",
+              "proxyConfig": "src/proxy.config.json"
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "https://opentdb.com",
+    "secure": true,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}
