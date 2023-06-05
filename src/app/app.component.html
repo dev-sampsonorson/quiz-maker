@@ -3,3 +3,5 @@
   [difficulties]="difficulties"
   (search)="searchForQuestions($event)"
 ></so-question-search>
+
+<so-quiz-display *ngIf="questions$ | async as questions" [questions]="questions"></so-quiz-display>

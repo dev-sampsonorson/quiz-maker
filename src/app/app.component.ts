@@ -1,15 +1,16 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { QuestionCategory, QuestionDifficulty as DifficultyLevel, QuestionSearchComponent, QuestionSearchQuery } from './shared/ui';
-import { OpentdbService } from './shared/services';
-import { Observable, map } from 'rxjs';
-import { DifficultyLevels } from './shared/types';
 import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { Observable, map } from 'rxjs';
+import { OpentdbService } from './shared/services';
+import { DifficultyLevels } from './shared/types';
+import { QuestionDifficulty as DifficultyLevel, QuestionCategory, QuestionSearchComponent, QuestionSearchQuery } from './shared/ui';
+import { QuizDisplayComponent } from './shared/ui/quiz-display';
 
 const DIFFICULTY_LEVELS: DifficultyLevels[] = ['Easy', 'Medium', 'Hard'];
 
 @Component({
   standalone: true,
-  imports: [NgIf, AsyncPipe, JsonPipe, QuestionSearchComponent],
+  imports: [NgIf, AsyncPipe, JsonPipe, QuestionSearchComponent, QuizDisplayComponent],
   providers: [OpentdbService],
   selector: 'so-root',
   templateUrl: './app.component.html',
