@@ -18,6 +18,6 @@
       </mat-select>
     </mat-form-field>
 
-    <button mat-stroked-button type="submit" class="create-button" id="createBtn" name="createBtn">Create</button>
+    <button mat-stroked-button [disabled]="form.invalid" type="submit" class="create-button" id="createBtn" name="createBtn">Create</button>
   </fieldset>
 </form>
