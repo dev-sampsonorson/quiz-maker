@@ -1,4 +1,5 @@
 <so-question-search
   [categories]="(categories$ | async) ?? []"
   [difficulties]="difficulties"
+  (search)="searchForQuestions($event)"
 ></so-question-search>

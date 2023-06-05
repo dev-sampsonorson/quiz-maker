@@ -1,23 +1,24 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { QuestionCategory, QuestionDifficulty as DifficultyLevel, QuestionSearchComponent } from './shared/ui';
+import { QuestionCategory, QuestionDifficulty as DifficultyLevel, QuestionSearchComponent, QuestionSearchQuery } from './shared/ui';
 import { OpentdbService } from './shared/services';
 import { Observable, map } from 'rxjs';
 import { DifficultyLevels } from './shared/types';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 
 const DIFFICULTY_LEVELS: DifficultyLevels[] = ['Easy', 'Medium', 'Hard'];
 
 @Component({
   standalone: true,
-  imports: [AsyncPipe, QuestionSearchComponent],
+  imports: [NgIf, AsyncPipe, JsonPipe, QuestionSearchComponent],
   providers: [OpentdbService],
   selector: 'so-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  opentdbService = inject(OpentdbService);
+export class AppComponent {
+  private opentdbService = inject(OpentdbService);
 
+  questions$ = this.opentdbService.questions$;
   categories$: Observable<QuestionCategory[]> = this.opentdbService.categories$.pipe(
     map(categories => categories.map(category => ({ value: category.id, label: category.name })))
   );
@@ -27,6 +28,7 @@ export class AppComponent implements OnInit {
     label: level,
   }));
 
-  ngOnInit(): void {
+  searchForQuestions(query: QuestionSearchQuery) {
+    this.opentdbService.searchForQuestions(query);
   }
 }
