@@ -10,6 +10,9 @@
           "style": "scss",
           "standalone": true,
           "changeDetection": "OnPush"
+        },
+        "@schematics/angular:service": {
+          "skipTests": false
         }
       },
       "root": "",

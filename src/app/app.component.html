@@ -1,4 +1,4 @@
 <so-question-search
-  [categories]="categories"
+  [categories]="(categories$ | async) ?? []"
   [difficulties]="difficulties"
 ></so-question-search>
