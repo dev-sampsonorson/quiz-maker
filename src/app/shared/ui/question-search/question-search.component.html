@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="sendSelector(form)" submit="event.preventDefault();">
+  <fieldset class="search-query">
+    <mat-form-field>
+      <mat-label>Select a category</mat-label>
+      <mat-select formControlName="category" required="" id="categorySelect" name="categorySelect">
+        <mat-option *ngFor="let option of categories; trackBy: categoryTrackBy" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Select a difficulty</mat-label>
+      <mat-select formControlName="difficulty" id="difficultySelect" name="difficultySelect" required="">
+        <mat-option *ngFor="let option of difficulties; trackBy: difficultyTrackBy" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-stroked-button type="submit" class="create-button" id="createBtn" name="createBtn">Create</button>
+  </fieldset>
+</form>

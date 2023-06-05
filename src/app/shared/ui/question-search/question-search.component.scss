@@ -1,0 +1,16 @@
+fieldset.search-query {
+  display: flex;
+  align-items: flex-start;
+  padding: 0;
+  border: 0;
+}
+
+.create-button {
+  height: 56px;
+  border-radius: 0;
+  border-color: rgba(0, 0, 0, 0.42) !important;
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.87) !important;
+  }
+}
