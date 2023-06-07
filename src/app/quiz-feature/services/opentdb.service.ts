@@ -23,14 +23,13 @@ export class OpentdbService {
 
   private searchForQuestions$$ = new Subject<QuestionSearchQueryInternal | null>();
   questions$: Observable<Question[]> = this.searchForQuestions$$.asObservable().pipe(
-    tap(x => console.log('xx => ', x)),
     switchMap(query => {
       if (query === null) return of([]);
 
       const { category, difficulty } = query;
 
       return this.http.get<QuestionsResponse>(
-        `/api/api.php?amount=5&category=${category}&difficulty=${difficulty}&type=multiple`
+        `https://opentdb.com/api.php?amount=5&category=${category}&difficulty=${difficulty}&type=multiple`
       ).pipe(
         map(response => response.results),
         map(results => this.combineAnswersRandomly(results)),
@@ -39,7 +38,7 @@ export class OpentdbService {
     })
   )
 
-  categories$ = this.http.get<CategoriesResponse>('/api/api_category.php').pipe(
+  categories$ = this.http.get<CategoriesResponse>('https://opentdb.com/api_category.php').pipe(
     map(respose => respose.trivia_categories),
     catchError(() => of([]))
   );
