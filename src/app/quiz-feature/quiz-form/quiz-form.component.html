@@ -1,0 +1,16 @@
+<form [formGroup]="form" (ngSubmit)="submitQuiz()">
+  <ng-container>
+    <ng-container *ngFor="let question of questions; index as i">
+      <so-quiz-item [question]="question" [formGroup]="getFormGroup(i)"
+        [formMode]="formMode"
+      >
+      </so-quiz-item>
+    </ng-container>
+    <ng-container *ngIf="isFormMode">
+      <button mat-flat-button color="primary" [hidden]="form.invalid" type="submit"
+              class="submit-button" id="submit-quiz" name="submit-quiz">
+        Submit
+      </button>
+    </ng-container>
+  </ng-container>
+</form>

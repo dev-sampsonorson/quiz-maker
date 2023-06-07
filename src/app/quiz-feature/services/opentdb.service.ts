@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, Subject, catchError, map, of, switchMap } from 'rxjs';
+import { Observable, Subject, catchError, map, of, switchMap, tap } from 'rxjs';
 import { Category, Question } from '../types';
 
 type QuestionsResponse = {
@@ -21,9 +21,14 @@ type QuestionSearchQueryInternal = {
 export class OpentdbService {
   http = inject(HttpClient);
 
-  private searchForQuestions$$ = new Subject<QuestionSearchQueryInternal>();
+  private searchForQuestions$$ = new Subject<QuestionSearchQueryInternal | null>();
   questions$: Observable<Question[]> = this.searchForQuestions$$.asObservable().pipe(
-    switchMap(({ category, difficulty }) => {
+    tap(x => console.log('xx => ', x)),
+    switchMap(query => {
+      if (query === null) return of([]);
+
+      const { category, difficulty } = query;
+
       return this.http.get<QuestionsResponse>(
         `/api/api.php?amount=5&category=${category}&difficulty=${difficulty}&type=multiple`
       ).pipe(
@@ -39,7 +44,7 @@ export class OpentdbService {
     catchError(() => of([]))
   );
 
-  searchForQuestions(query: any) {
+  searchForQuestions(query: QuestionSearchQueryInternal | null) {
     this.searchForQuestions$$.next(query);
   }
 

@@ -1,7 +1,4 @@
-<so-question-search
-  [categories]="(categories$ | async) ?? []"
-  [difficulties]="difficulties"
-  (search)="searchForQuestions($event)"
-></so-question-search>
+<router-outlet></router-outlet>
 
-<so-quiz-display *ngIf="questions$ | async as questions" [questions]="questions"></so-quiz-display>
+<!--  -->
+<!-- <so-quiz-display *ngIf="questions$ | async as questions" [questions]="questions"></so-quiz-display> -->

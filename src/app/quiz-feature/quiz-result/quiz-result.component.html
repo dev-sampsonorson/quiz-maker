@@ -1,0 +1,16 @@
+<h1 class="heading">Results</h1>
+<mat-divider class="dislay-divider"></mat-divider>
+<ng-container *ngIf="viewModel$ | async as viewModel">
+  <so-quiz-form
+    [questions]="viewModel.questions"
+    [userAnswers]="viewModel.userAnswers"
+    [formMode]="'display'"
+  >
+  </so-quiz-form>
+
+  <div class="score-display" [ngClass]="scoreGradeClass(viewModel.score)">{{ viewModel.scoreDisplay }}</div>
+
+  <button mat-flat-button color="primary" [routerLink]="['/']" type="button" class="create-new-quiz">
+    Create a new quiz
+  </button>
+</ng-container>

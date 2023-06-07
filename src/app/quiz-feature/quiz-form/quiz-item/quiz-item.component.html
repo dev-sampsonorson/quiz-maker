@@ -1,0 +1,13 @@
+
+<ng-container *ngIf="question" [formGroup]="formGroup">
+  <p [innerHTML]="question.question | safeHtml"></p>
+  <mat-button-toggle-group formControlName="answer" class="answer-group" name="quizAnswers">
+    <mat-button-toggle
+      *ngFor="let answer of question.answers"
+      [value]="answer"
+      [class.correct]="isCorrectAnswer(answer)"
+    >
+      <span [innerHTML]="answer | titlecase | safeHtml"></span>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</ng-container>

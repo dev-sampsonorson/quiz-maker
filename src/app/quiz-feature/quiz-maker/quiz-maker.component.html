@@ -1,0 +1,14 @@
+<h1 class="heading">Quiz Maker</h1>
+<so-quiz-search
+  [categories]="(categories$ | async) ?? []"
+  [difficulties]="difficulties"
+  (search)="searchForQuestions($event)"
+></so-quiz-search>
+<mat-divider class="dislay-divider"></mat-divider>
+<so-quiz-form
+  *ngIf="questions$ | async as questions"
+  [questions]="questions"
+  [formMode]="'form'"
+  (submitAnswers)="displayResult($event)"
+>
+</so-quiz-form>

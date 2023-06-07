@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.heading {
+  align-self: center;
+  font-weight: 500;
+  margin: 0;
+  padding: 0 8px 0 8px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.score-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  text-transform: uppercase;
+  align-self: center;
+
+  &.so-good {
+    background: green;
+    color: white;
+  }
+
+  &.so-average {
+    background: yellow;
+    color: black;
+  }
+
+  &.so-bad {
+    background: red;
+    color: white;
+  }
+}
+
+.create-new-quiz {
+  align-self: stretch;
+}

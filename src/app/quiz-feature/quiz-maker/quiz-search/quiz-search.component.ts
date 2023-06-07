@@ -4,10 +4,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { QuestionCategory, QuestionDifficulty, QuestionSearchFormGroup, QuestionSearchQuery } from './question-search.type';
+import { QuestionCategory, QuestionDifficulty, QuestionSearchFormGroup, QuestionSearchQuery } from './quiz-search.type';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'so-question-search',
+  selector: 'so-quiz-search',
   standalone: true,
   imports: [
     NgFor,
@@ -16,11 +17,12 @@ import { QuestionCategory, QuestionDifficulty, QuestionSearchFormGroup, Question
     MatSelectModule,
     MatButtonModule,
   ],
-  templateUrl: './question-search.component.html',
-  styleUrls: ['./question-search.component.scss'],
+  templateUrl: './quiz-search.component.html',
+  styleUrls: ['./quiz-search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuestionSearchComponent {
+export class QuizSearchComponent {
+  router = inject(Router);
   fb = inject(FormBuilder);
   form: QuestionSearchFormGroup = this.fb.group({
     category: this.fb.control<number | null>(null, {
