@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "level2Cert": {
+    "quiz-maker": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "level2Cert:build:production"
+              "browserTarget": "quiz-maker:build:production"
             },
             "development": {
-              "browserTarget": "level2Cert:build:development",
+              "browserTarget": "quiz-maker:build:development",
               "proxyConfig": "src/proxy.config.json"
             }
           },
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "level2Cert:build"
+            "browserTarget": "quiz-maker:build"
           }
         },
         "test": {
